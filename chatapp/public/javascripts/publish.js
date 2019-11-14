@@ -8,11 +8,20 @@ function publish() {
     const message = $('#message').val();
     //ユーザ名とメッセージの内容のデータをまとめる
     const userMessage = { userName, message };
+
+    // 空文字以外ならTrue判定を逆転 == 空文字ならTrueになる
+    if (!message.match(/\S/g)) {
+        alert('テキストを入力してください');
+        $('#message').val('');
+        return false
+    }
+
     // 投稿内容に正解が含まれているかの確認
     if (message === 'hogehoge') {
         alert('正解しました！');
         exit();
     }
+
     // 投稿内容を送信
     socket.emit('sendMessage', userMessage);
 
