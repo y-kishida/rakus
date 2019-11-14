@@ -7,7 +7,12 @@ function publish() {
     // 入力されたメッセージを取得
     const message = $('#message').val();
     //ユーザ名とメッセージの内容のデータをまとめる
-    const userMessage = {userName,message};
+    const userMessage = { userName, message };
+    // 投稿内容に正解が含まれているかの確認
+    if (message === 'hogehoge') {
+        alert('正解しました！');
+        exit();
+    }
     // 投稿内容を送信
     socket.emit('sendMessage', userMessage);
     return false;
