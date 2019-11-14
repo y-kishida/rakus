@@ -32,5 +32,10 @@ function publish() {
 
 // サーバから受信した投稿メッセージを画面上に表示する
 socket.on('receiveMessage', function (userMessage) {
-    $('#thread').prepend(`<p>${userMessage.userName}さん:${userMessage.message}</p>`);
+    // 自分の投稿かどうかを判定して、自分の投稿なら太字
+    if ($('#userName').val() === userMessage.userName) {
+        $('#thread').prepend(`<p><b>${userMessage.userName}さん:${userMessage.message}</b></p>`);
+    } else {
+        $('#thread').prepend(`<p>${userMessage.userName}さん:${userMessage.message}</p>`);
+    }
 });
