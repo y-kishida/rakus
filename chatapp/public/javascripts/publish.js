@@ -15,6 +15,9 @@ function publish() {
     }
     // 投稿内容を送信
     socket.emit('sendMessage', userMessage);
+
+    // 投稿したら削除
+    $('#message').val('');
     return false;
 }
 
