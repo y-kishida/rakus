@@ -17,7 +17,7 @@ function publish() {
     }
 
     // 投稿内容に正解が含まれているかの確認
-    if (message === 'hogehoge') {
+    if (message.match('hogehoge')) {
         alert('正解しました！');
         exit();
     }
@@ -34,7 +34,7 @@ function publish() {
 socket.on('receiveMessage', function (userMessage) {
     // 自分の投稿かどうかを判定して、自分の投稿なら太字
     if ($('#userName').val() === userMessage.userName) {
-        $('#thread').prepend(`<p><b>${userMessage.userName}さん:${userMessage.message}</b></p>`);
+        $('#thread').prepend(`<div class="message-box"><div class="userName">${userMessage.userName}さん:</div><div class="message">${userMessage.message}</div>`);
     } else {
         $('#thread').prepend(`<p>${userMessage.userName}さん:${userMessage.message}</p>`);
     }
