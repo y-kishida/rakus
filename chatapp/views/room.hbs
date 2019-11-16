@@ -32,3 +32,12 @@
 <script src="/javascripts/memo.js"></script>
 <script src="/javascripts/exit.js"></script>
 <script src="/javascripts/quiz.js"></script>
+
+<script>
+    $('#message').keypress(function (e) {
+        if (e.keyCode == 13 && e.shiftKey) {
+            publish();
+            e.preventDefault();
+        }
+    })
+</script>
