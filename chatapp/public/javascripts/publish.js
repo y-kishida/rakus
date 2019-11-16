@@ -36,10 +36,17 @@ function publish() {
 // 休止ボタンが押されたらフラッグを変更
 function take_break() {
     take_break_flag = !take_break_flag;
+    const userName = $('#userName').val();
     if (take_break_flag) {
         $('#take_break_button').val('休止中');
+        const takeBreakText = '休止しました'
+        const userMessage = { userName, takeBreakText }
+        socket.emit('sendTakeBreakNotification', userMessage);
     } else {
-        $('#take_break_button').val('休止する')
+        const takeBreakText = '復帰しました'
+        const userMessage = { userName, takeBreakText }
+        $('#take_break_button').val('休止する');
+        socket.emit('sendTakeBreakNotification', userMessage);
     }
 }
 
@@ -56,4 +63,8 @@ socket.on('receiveMessage', function (userMessage) {
     } else {
         $('#thread').prepend(`<div class="message-box"><div class="userName">${userMessage.userName}さん:</div><div class="message">${userMessage.message}</div>`);
     }
+});
+
+socket.on('recceiveNotification', function (userMessage) {
+    $('#thread').prepend(`<div class="message-box"><div class="userName">${userMessage.userName}さんが${userMessage.takeBreakText}</div></div>`);
 });
