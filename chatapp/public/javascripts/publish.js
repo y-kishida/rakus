@@ -1,5 +1,8 @@
 'use strict';
 
+// 入室時の休止フラッグの設定（初期値はfalse、休止しない)
+let take_break_flag = false;
+
 // 投稿メッセージをサーバに送信する
 function publish() {
     // ユーザ名を取得
@@ -30,8 +33,23 @@ function publish() {
     return false;
 }
 
+// 休止ボタンが押されたらフラッグを変更
+function take_break() {
+    take_break_flag = !take_break_flag;
+    if (take_break_flag) {
+        $('#take_test').val('休止中');
+    } else {
+        $('#take_test').val('休止する')
+    }
+}
+
 // サーバから受信した投稿メッセージを画面上に表示する
 socket.on('receiveMessage', function (userMessage) {
+    // 休止フラッグがtrueなら処理をしない
+    if (take_break_flag) {
+        return;
+    }
+
     // 自分の投稿かどうかを判定して、自分の投稿なら太字
     if ($('#userName').val() === userMessage.userName) {
         $('#thread').prepend(`<div class="message-box"><div class="userName">${userMessage.userName}さん:</div><div class="message">${userMessage.message}</div>`);
