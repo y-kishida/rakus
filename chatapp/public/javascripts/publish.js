@@ -37,9 +37,9 @@ function publish() {
 function take_break() {
     take_break_flag = !take_break_flag;
     if (take_break_flag) {
-        $('#take_test').val('休止中');
+        $('#take_break_button').val('休止中');
     } else {
-        $('#take_test').val('休止する')
+        $('#take_break_button').val('休止する')
     }
 }
 
