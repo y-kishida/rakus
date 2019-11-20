@@ -15,6 +15,6 @@ module.exports = function (socket, io) {
   });
 
   socket.on('sendTakeBreakNotification', function (userMessage) {
-    socket.broadcast.emit('recceiveNotification', userMessage);
+    socket.broadcast.emit('recceiveTakeBreakeNotification', userMessage);
   })
 };

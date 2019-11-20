@@ -65,6 +65,6 @@ socket.on('receiveMessage', function (userMessage) {
     }
 });
 
-socket.on('recceiveNotification', function (userMessage) {
+socket.on('recceiveTakeBreakeNotification', function (userMessage) {
     $('#thread').prepend(`<div class="message-box"><div class="userName">${userMessage.userName}さんが${userMessage.takeBreakText}</div></div>`);
 });
