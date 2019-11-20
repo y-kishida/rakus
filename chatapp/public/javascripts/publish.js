@@ -2,6 +2,7 @@
 
 // 入室時の休止フラッグの設定（初期値はfalse、休止しない)
 let take_break_flag = false;
+Notification.requestPermission();
 
 // 投稿メッセージをサーバに送信する
 function publish() {
@@ -61,6 +62,14 @@ socket.on('receiveMessage', function (userMessage) {
     if ($('#userName').val() === userMessage.userName) {
         $('#thread').prepend(`<div class="message-box my-message"><div class="userName">${userMessage.userName}さん:</div><div class="message">${userMessage.message}</div>`);
     } else {
+        if (Notification.permission === 'granted') {
+            var test = new Notification(
+                userMessage.userName,
+                {
+                    body: userMessage.message
+                }
+            );
+        }
         $('#thread').prepend(`<div class="message-box"><div class="userName">${userMessage.userName}さん:</div><div class="message">${userMessage.message}</div>`);
     }
 });
