@@ -21,7 +21,7 @@ function publish() {
     }
 
     // 投稿内容に正解が含まれているかの確認
-    if (message.match('hogehoge')) {
+    if (message.match(answer)) {
         alert('正解しました！');
         exit();
     }
