@@ -12,5 +12,11 @@ function quiz() {
 socket.on('receiveQuizMessageEvent', function (data) {
     // ここにクイズボタンを消す処理
     $('.room-quiz_button').hide();
-    $('#thread').prepend('<p>' + data +'さんがクイズの森を開始しました。'+ '</p>');
+    //　ここに投稿ボタンを回答ボタンに変える処理
+    document.getElementById("btn-text").value = "回答";
+    $('#thread').prepend('<h3>' + data +'さんがクイズの森を開始しました。'+ '</h3>');
+    // ここに一度回答したら退出ボタンを消す処理
+    $('.room-publish_button').click(function(){
+     $('.room-exit_button').hide();
+    });
 });
