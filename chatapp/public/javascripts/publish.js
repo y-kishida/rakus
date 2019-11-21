@@ -59,13 +59,6 @@ socket.on('receiveMessage', function (userMessage) {
     }
 
     // 自分の投稿かどうかを判定して、自分の投稿なら太字
-    db.run(`
-      CREATE TABLE IF NOT EXISTS chat (
-        id    INTEGER  PRIMARY KEY  AUTOINCREMENT,
-        name  TEXT,
-        quiz_start INTEGER
-      )
-    `);
     if ($('#userName').val() === userMessage.userName) {
         $('#thread').prepend(`<div class="message-box my-message"><div class="userName">${userMessage.userName}さん:</div><div class="message">${userMessage.message}</div>`);
     } else {
