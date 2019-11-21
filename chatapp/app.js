@@ -10,6 +10,17 @@ const bodyParser = require('body-parser');
 const routes = require('./routes/index');
 
 const app = express();
+// DB を準備する
+const db = require('./db/db');
+db.init();
+
+// CORS を許可する : https://stackoverflow.com/questions/44914330/method-put-is-not-allowed-by-access-control-allow-methods-in-preflight-response
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  next();
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

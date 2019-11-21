@@ -1,5 +1,5 @@
 'use strict';
-
+const db = require('../db/db').db;
 const quiz_db = [
   {
     "question": "りんごのいろは？",
@@ -26,6 +26,8 @@ module.exports = function (socket, io) {
       data,
       quiz
     };
+    # DBのクイズ状態の更新
+    db.run('UPDATE chat SET quiz_start = ? WHERE id = ?', [0, 1]);
     // 全クライアントが受信するメッセージ表示イベント（receiveQuizMessageEvent）を送信する
     io.sockets.emit('receiveQuizMessageEvent', data);
     io.sockets.emit('receiveQuizAnswer', data.quiz['answer']);
