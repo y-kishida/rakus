@@ -84,8 +84,11 @@ div {
 
 .message-box {
     display: flex;
-    font-weight: bold;
     margin: 0px;
+}
+
+.my-message {
+    font-weight: bold;
 }
 
 .message-box > * {

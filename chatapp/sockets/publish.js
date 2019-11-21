@@ -13,4 +13,8 @@ module.exports = function (socket, io) {
     userMessage.message = userMessage.message.replace(/\r?\n/g, '<br>');
     io.sockets.emit('receiveMessage', userMessage);
   });
+
+  socket.on('sendTakeBreakNotification', function (userMessage) {
+    socket.broadcast.emit('recceiveTakeBreakeNotification', userMessage);
+  })
 };
