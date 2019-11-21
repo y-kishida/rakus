@@ -81,3 +81,16 @@ div {
 .room-exit_button {
 
 }
+
+.message-box {
+    display: flex;
+    margin: 0px;
+}
+
+.my-message {
+    font-weight: bold;
+}
+
+.message-box > * {
+    margin-top: 10px;
+}
