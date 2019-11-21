@@ -20,9 +20,12 @@ const init = () => {
       message text
     )
   `);
-
-    // Prepared Statement でデータを挿入する
-    const stmt = db.prepare('INSERT INTO chat (name, quiz_start) VALUES (?, ?)');
-    stmt.run(['quiz', 0]);
 };
+db.serialize(() => {
+  // Prepared Statement でデータを挿入する
+  const stmt = db.prepare('INSERT INTO chat (name, quiz_start) VALUES (?, ?)');
+  stmt.run(['quiz', 0]);
+  // prepare() で取得した Prepared Statement オブジェクトをクローズする。これをコールしないとエラーになる
+  stmt.finalize();
+});
 db.close();
