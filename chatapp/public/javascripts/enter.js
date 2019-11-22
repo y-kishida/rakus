@@ -19,14 +19,6 @@ socket.on('recieveRestoreEvent', function (rooms) {
       if ($('#userName').val() === rooms[i].name) {
           $('#thread').prepend(`<div class="message-box my-message"><div class="userName">${rooms[i].name}さん:</div><div class="message">${rooms[i].message}</div>`);
       } else {
-          if (Notification.permission === 'granted') {
-              var test = new Notification(
-                  rooms[i].message,
-                  {
-                      body: rooms[i].message
-                  }
-              );
-          }
           $('#thread').prepend(`<div class="message-box"><div class="userName">${rooms[i].name}さん:</div><div class="message">${rooms[i].message}</div>`);
       }
 }
