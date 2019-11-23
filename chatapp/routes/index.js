@@ -47,10 +47,8 @@ router.get('/', function(request, response, next) {
 // チャット画面の表示
 router.post('/room', async function(request, response, next) {
   const chat = new chatModel();
-  const room = new roomModel();
   let quiz_status = '';
   quiz_status = await chat.findById(1);
-  const rooms = await room.findAll();
   console.log('ユーザ名：' + request.body.userName);
     if (quiz_status.quiz_start==0){
       quiz_start = "button";
