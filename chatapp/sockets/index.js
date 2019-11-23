@@ -17,5 +17,8 @@ module.exports = function (server) {
 
         // クイズモジュールの呼出
         require('./quiz')(socket, io);
+
+        // 復元モジュールの呼出
+        require('./restore')(socket, io);
     });
 };
