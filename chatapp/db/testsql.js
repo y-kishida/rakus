@@ -15,17 +15,30 @@ const init = () => {
   db.run(`
     CREATE TABLE IF NOT EXISTS room (
       id    INTEGER  PRIMARY KEY  AUTOINCREMENT,
-      room_id  TEXT,
       name TEXT,
-      message text
+      room_id  INTEGER,
+      message TEXT,
+      date TEXT,
+      message_type TEXT
     )
   `);
 };
+
 db.serialize(() => {
+  init();
   // Prepared Statement でデータを挿入する
   const stmt = db.prepare('INSERT INTO chat (name, quiz_start) VALUES (?, ?)');
   stmt.run(['quiz', 0]);
   // prepare() で取得した Prepared Statement オブジェクトをクローズする。これをコールしないとエラーになる
   stmt.finalize();
+
+  db.each('SELECT * FROM chat', (error, row) => {
+    if(error) {
+      console.error('Error!', error);
+      return;
+    }
+    // カラムを指定してデータを表示する
+    console.log('id : ' + row.id + ', name : ' + row.name + ', quiz_status : ' + row.quiz_start);
+  });
 });
 db.close();
