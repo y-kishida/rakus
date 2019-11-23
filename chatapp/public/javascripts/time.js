@@ -1,5 +1,6 @@
   //ここにカウントダウンの秒数定義
   let count = 5;
+
   //　属性の値を取得する
   const quiz_text = document.getElementById("btn-quiz");
   const status = quiz_text.getAttribute("type");
@@ -12,11 +13,13 @@
       count--;
       const count_text = 'クイズ回答終了まで'
       $('#countdown').text(count);
+      //　ここに復元機能を呼び出す
+      socket.emit('sendQuizModeEvent');
       // 0秒になった時
       if(count == 0) {
-      location.href = 'https://fresh-recruit.rakus.co.jp/rakuraku/';
+      location.href = 'http://3.113.91.67:10058/end';
     }
-  }  
+  }
   }
 
   // クイズボタンがクリックされた場合の処理
@@ -26,9 +29,11 @@
       count--;
       const count_text = 'クイズ回答終了まで'
       $('#countdown').text(count);
+      //　ここに復元機能を呼び出す
+      socket.emit('sendQuizModeEvent');
       // 0秒になった時
       if(count == 0) {
-      location.href = 'https://fresh-recruit.rakus.co.jp/rakuraku/';
+      location.href = 'http://3.113.91.67:10058/end';
     }
   }
   });

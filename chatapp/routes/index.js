@@ -57,4 +57,9 @@ router.post('/room', async function(request, response, next) {
     response.render('room', { userName: request.body.userName, quizrStart:  quiz_start});
 });
 
+// リダイレクト先の表示
+router.get('/end', function(request, response, next) {
+    response.render('end');
+})
+
 module.exports = router;
