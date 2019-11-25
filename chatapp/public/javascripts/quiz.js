@@ -19,9 +19,15 @@ socket.on('receiveQuizMessageEvent', function (data) {
     $('#thread').prepend('<h3>' + data.data + 'さんがクイズの森を開始しました。' + '</h3>');
     $('#thread').prepend('<h3>' + data.quiz['question'] + '</h3>');
     // ここに一度回答したら退出ボタンを消す処理
+// <<<<<<< Updated upstream
     $('.room-publish_button').click(function () {
         $('.room-exit_button').hide();
     });
+// =======
+//     $('.room-publish_button').click(function(){
+//      $('.room-exit_button').hide();
+//   });
+// >>>>>>> Stashed changes
 });
 
 socket.on('receiveQuizAnswer', function (data) {
