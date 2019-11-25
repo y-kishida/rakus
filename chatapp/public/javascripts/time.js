@@ -1,5 +1,5 @@
   //ここにカウントダウンの秒数定義
-  let count = 5;
+  let count = 10;
 
   //　属性の値を取得する
   if ($('.room-quiz_button').is(':visible')) {
