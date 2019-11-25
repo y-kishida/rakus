@@ -15,7 +15,7 @@
       // socket.emit('sendQuizModeEvent');
       // 0秒になった時
       if(count == 0) {
-      location.href = 'http://3.113.91.67:10058/end';
+      location.href = '/end';
     }
   }
   }
@@ -31,7 +31,7 @@
       // socket.emit('sendQuizModeEvent');
       // 0秒になった時
       if(count == 0) {
-      location.href = 'http://3.113.91.67:10058/end';
+      location.href = '/end';
     }
   }
   });
