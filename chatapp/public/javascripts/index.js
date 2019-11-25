@@ -10,15 +10,18 @@ function enter() {
   console.log(userName);
   if (userName !== '') {
     socket.emit('checkNameDeplicate', userName);
-    socket.on('blockEnterFlag', function(flag){
-      if (flag){
-        alert('すでに同じ名前の人が入室しています\n\
-        名前を変えてください');
-      }else{
-        $('form').submit();
-      }
-    });
   } else {
     alert('ユーザ名を入力してください');
   }
-}
+};
+
+socket.on('blockEnterFlag', function (flag) {
+  console.log('Yo!')
+  if (flag) {
+    console.log('Yeah!')
+    alert('すでに同じ名前の人が入室しています\n\
+    名前を変えてください');
+  } else {
+    $('form').submit();
+  }
+});
