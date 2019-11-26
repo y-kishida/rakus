@@ -16,7 +16,12 @@ socket.on('enterRoom', function (data) {
 socket.on('recieveRestoreEvent', function (rooms) {
     console.log(rooms);
     for (var i = 0; i < rooms.length; i++) {
-      if ($('#userName').val() === rooms[i].name) {
+      if (rooms[i].message_type == 'クイズ'){
+        var obj = JSON.parse(rooms[i].message);
+        $('#thread').prepend('<h3>' + rooms[i].name + 'さんがクイズの森を開始しました。' + '</h3>');
+        $('#thread').prepend('<h3>' + obj.quiz['question'] + '</h3>');
+      }
+      else if ($('#userName').val() === rooms[i].name) {
           $('#thread').prepend(`<div class="message-box my-message"><div class="userName">${rooms[i].name}さん:</div><div class="message">${rooms[i].message}</div>`);
       } else {
           $('#thread').prepend(`<div class="message-box"><div class="userName">${rooms[i].name}さん:</div><div class="message">${rooms[i].message}</div>`);

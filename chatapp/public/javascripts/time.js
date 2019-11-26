@@ -6,6 +6,7 @@
     // 表示の場合
   } else {
     // 非表示の場合
+    socket.emit('sendQuizModeEvent',count);
     setInterval(count_down, 1000);
     function count_down() {
       count--;
