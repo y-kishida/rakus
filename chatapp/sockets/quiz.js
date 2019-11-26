@@ -27,7 +27,7 @@ module.exports = function (socket, io) {
       quiz
     };
     // DBのクイズ状態の更新
-    db.run('UPDATE chat SET quiz_start = ? WHERE id = ?', [0, 1]);
+    db.run('UPDATE chat SET quiz_start = ? WHERE id = ?', [1, 1]);
     // 全クライアントが受信するメッセージ表示イベント（receiveQuizMessageEvent）を送信する
     io.sockets.emit('receiveQuizMessageEvent', data);
     io.sockets.emit('receiveQuizAnswer', data.quiz['answer']);
