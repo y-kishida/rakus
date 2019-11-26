@@ -23,6 +23,7 @@ class ChatEntity {
 }
 
 var chatModel = require('../db/chat-model');
+var roomModel = require('../db/room-model');
 
 // ------------------------------------------------------------
 // 成功時に呼び出される関数
@@ -48,7 +49,7 @@ router.post('/room', async function(request, response, next) {
   const chat = new chatModel();
   let quiz_status = '';
   quiz_status = await chat.findById(1);
-    console.log('ユーザ名：' + request.body.userName);
+  console.log('ユーザ名：' + request.body.userName);
     if (quiz_status.quiz_start==0){
       quiz_start = "button";
     }else{

@@ -15,9 +15,11 @@ const init = () => {
   db.run(`
     CREATE TABLE IF NOT EXISTS room (
       id    INTEGER  PRIMARY KEY  AUTOINCREMENT,
-      room_id  TEXT,
       name TEXT,
-      message text
+      room_id  INTEGER,
+      message TEXT,
+      date TEXT,
+      message_type TEXT
     )
   `);
 };
