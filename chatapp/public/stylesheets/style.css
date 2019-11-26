@@ -3,6 +3,7 @@
  */
 body {
     font: 14px "Lucida Grande", Meiryo, Helvetica, Arial, sans-serif;
+    background-color: #f9f9f9;
 }
 
 a {
@@ -13,45 +14,85 @@ div {
     margin: 20px 0px;
 }
 
+/* end.hbsのCSS*/
+.end-wrapper {
+  margin: 0 auto;
+  background-color: #000;
+}
+
+.quiz-end{
+  font-size: 10em;
+  color: red;
+  padding:20%;
+}
+
 .row {
-    margin: 20px;
+    margin: 13% 13% 0 13%;
+}
+
+.user-name-wrapper{
+    margin: 4% 13% 0 13%;
+    padding:2%;
 }
 
 /*
  * ボタンの共通設定
  */
 .common-button {
-
+  border-radius: 5px;
+  color: #fff;
+  width:15%;
+  height:50px;
 }
+
 
 /*
  * トップ画面（index.hbs）に関する設定
  */
-.index-user_name {
 
+ .container{
+   width: 700px;
+   height:500px;
+   margin:8% auto;
+   background-color: #fff;
+   padding: 2%;
+ }
+
+.index-user_name {
+  font-size: 20px;
 }
 
 .index-user_name_text {
-    width: 200px;
+    width: 100%;
 }
 
 .index-enter {
-
+  margin: 0 auto;
 }
 
 .index-enter_button {
-
+  width:100%;
+  background-color: orange;
 }
 
 /*
  * チャットルーム画面（room.hbs）に関する設定
  */
+
+ .contents {
+   width:700px;
+   margin: 0 auto;
+ }
+
 .room-login_user {
 
  }
 
-.room-message {
+#message{
+  border:solid orange 1px;
+}
 
+.room-message {
 }
 
 .room-message_textarea {
@@ -63,23 +104,32 @@ div {
 }
 
 .room-publish_button {
-
+  background-color: blue;
 }
 
 .room-memo_button {
+  background-color: green;
+}
 
+.room-quiz_button{
+  background-color: orange;
+}
+
+.room-takebreak-button{
+  background-color: grey;
 }
 
 .room-thread {
 
 }
 
+
 .room-exit {
 
 }
 
 .room-exit_button {
-
+  background-color: red;
 }
 
 .message-box {
