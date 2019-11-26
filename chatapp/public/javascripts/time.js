@@ -1,9 +1,7 @@
   //ここにカウントダウンの秒数定義
-  let count = 5;
+  let count = 10;
 
   //　属性の値を取得する
-  const quiz_text = document.getElementById("btn-quiz");
-  const status = quiz_text.getAttribute("type");
   if ($('.room-quiz_button').is(':visible')) {
     // 表示の場合
   } else {
@@ -14,10 +12,10 @@
       const count_text = 'クイズ回答終了まで'
       $('#countdown').text(count);
       //　ここに復元機能を呼び出す
-      socket.emit('sendQuizModeEvent');
+      // socket.emit('sendQuizModeEvent');
       // 0秒になった時
       if(count == 0) {
-      location.href = 'http://3.113.91.67:10058/end';
+      location.href = '/end';
     }
   }
   }
@@ -30,10 +28,10 @@
       const count_text = 'クイズ回答終了まで'
       $('#countdown').text(count);
       //　ここに復元機能を呼び出す
-      socket.emit('sendQuizModeEvent');
+      // socket.emit('sendQuizModeEvent');
       // 0秒になった時
       if(count == 0) {
-      location.href = 'http://3.113.91.67:10058/end';
+      location.href = '/end';
     }
   }
   });
