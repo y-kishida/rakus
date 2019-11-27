@@ -12,6 +12,16 @@ function quiz() {
 
 // サーバから受信した退室メッセージを画面上に表示する
 socket.on('receiveQuizMessageEvent', function (data) {
+  setInterval(count_down, 1000);
+  function count_down() {
+    count--;
+    const count_text = 'クイズ回答終了まで'
+    $('#countdown').text(count);
+    // 0秒になった時
+    if(count == 0) {
+      location.href = '/end';
+  }
+}
     // ここにクイズボタンを消す処理
     $('.room-quiz_button').hide();
     //　ここに投稿ボタンを回答ボタンに変える処理
