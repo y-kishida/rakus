@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db/db').db;
 let quiz_start = "button";
+let quiz_button = "投稿";
 /**
  * Chat Entity
  */
@@ -49,13 +50,15 @@ router.post('/room', async function(request, response, next) {
   const chat = new chatModel();
   let quiz_status = '';
   quiz_status = await chat.findById(1);
-  console.log('ユーザ名：' + request.body.userName);
+  console.log('ユーザ名：' + request.body.userName+quiz_status.quiz_start);
     if (quiz_status.quiz_start==0){
       quiz_start = "button";
+      quiz_button = '投稿';
     }else{
       quiz_start = "hidden";
+      quiz_button = '回答';
     }
-    response.render('room', { userName: request.body.userName, quizrStart:  quiz_start});
+    response.render('room', { userName: request.body.userName, quizrStart:  quiz_start, quizButton :quiz_button});
 });
 
 // リダイレクト先の表示

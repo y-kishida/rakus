@@ -25,6 +25,9 @@ function publish() {
         alert('正解しました！');
         exit();
     }
+    else{
+      console.log(answer+ '不正解');
+    }
 
     // 投稿内容を送信
     socket.emit('sendMessage', userMessage);
