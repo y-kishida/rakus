@@ -7,7 +7,11 @@ module.exports = function (socket) {
   socket.on('enterRoom', function (data) {
     global.memberList.push(data);
     console.log('enter memberList: ', global.memberList);
-    socket.broadcast.emit('enterRoom', data)
+    data = {
+      data,
+      memberList,
+    }
+    socket.emit('enterRoom', data)
   });
 
   socket.on('checkNameDeplicate', function (userName) {

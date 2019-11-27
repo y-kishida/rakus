@@ -10,7 +10,8 @@ socket.emit('sendRestoreEvent',userName);
 
 // サーバから受信した入室メッセージを画面上に表示する
 socket.on('enterRoom', function (data) {
-    $('#thread').prepend(`<p>${data}さんが入室しました</p>`);
+    $('#thread').prepend(`<p>${data.data}さんが入室しました</p>`);
+    $('#list').text(`${data.memberList}`)
 });
 
 socket.on('recieveRestoreEvent', function (rooms) {
