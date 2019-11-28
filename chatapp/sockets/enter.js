@@ -5,7 +5,9 @@ global.memberList = []
 module.exports = function (socket) {
   // 入室メッセージをクライアントに送信する
   socket.on('enterRoom', function (data) {
-    global.memberList.push(data);
+    if (!(global.memberList.indexOf(data) != -1)) {
+      global.memberList.push(data);
+    }
     console.log('enter memberList: ', global.memberList);
     data = {
       data,
